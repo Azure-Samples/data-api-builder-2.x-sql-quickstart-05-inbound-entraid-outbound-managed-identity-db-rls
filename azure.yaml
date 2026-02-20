@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
 
-name: dab-quickstart5
+name: dab-mssql-quickstart5
 metadata:
-  template: dab-quickstart5
+  template: dab-mssql-quickstart5
 
 infra:
   provider: bicep

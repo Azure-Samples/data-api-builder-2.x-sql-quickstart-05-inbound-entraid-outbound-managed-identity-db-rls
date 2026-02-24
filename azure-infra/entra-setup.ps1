@@ -1,4 +1,4 @@
-# Entra ID setup — creates app registration, test user, and .azure-env
+# Entra ID setup -- creates app registration, test user, and .azure-env
 
 $ErrorActionPreference = "Stop"
 
@@ -230,7 +230,7 @@ if ($dabConfigContent -match '__AUDIENCE__|__ISSUER__') {
     $failed += "data-api/dab-config.json still contains placeholders"
 }
 if ($failed.Count -gt 0) {
-    foreach ($f in $failed) { Write-Host "✗ $f" -ForegroundColor Red }
+    foreach ($f in $failed) { Write-Host "x $f" -ForegroundColor Red }
     exit 1
 }
-Write-Host "✓ All config files verified" -ForegroundColor Green
+Write-Host "v All config files verified" -ForegroundColor Green

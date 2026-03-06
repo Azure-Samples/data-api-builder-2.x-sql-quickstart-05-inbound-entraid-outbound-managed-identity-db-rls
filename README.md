@@ -61,7 +61,7 @@ flowchart LR
 ```bash
 dotnet tool restore
 az login
-aspire run
+dotnet run --project aspire-apphost
 ```
 
 On first run, Aspire detects Entra ID isn't configured and walks you through setup. The script creates an app registration, updates `config.js` and `dab-config.json`, then starts normally.

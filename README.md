@@ -119,3 +119,13 @@ erDiagram
 ```
 
 > The `Owner` column stores the Entra ID UPN. The RLS policy filters rows automatically at the SQL layer.
+
+## Related Quickstarts
+
+| Quickstart | Inbound | Outbound | Security |
+|------------|---------|----------|----------|
+| [Quickstart 1](https://github.com/Azure-Samples/data-api-builder-2.x-sql-quickstart-01-inbound-anonymous-outbound-sql-auth) | Anonymous | SQL Auth | — |
+| [Quickstart 2](https://github.com/Azure-Samples/data-api-builder-2.x-sql-quickstart-02-inbound-anonymous-outbound-managed-identity) | Anonymous | Managed Identity | — |
+| [Quickstart 3](https://github.com/Azure-Samples/data-api-builder-2.x-sql-quickstart-03-inbound-entraid-outbound-managed-identity) | Entra ID | Managed Identity | — |
+| [Quickstart 4](https://github.com/Azure-Samples/data-api-builder-2.x-sql-quickstart-04-inbound-entraid-outbound-managed-identity-api-rls) | Entra ID | Managed Identity | API RLS |
+| **This repo** | Entra ID | Managed Identity | DB RLS |

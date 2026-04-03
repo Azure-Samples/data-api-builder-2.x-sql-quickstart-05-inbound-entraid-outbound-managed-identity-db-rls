@@ -1,6 +1,6 @@
 # Quickstart 5: Row-Level Security
 
-Builds on [Quickstart 4](../quickstart4/) by moving enforcement into the **database** with SQL Row-Level Security. The authentication flow is identical to Quickstart 4. What changes is where authorization happens.
+Moves enforcement into the **database** with SQL Row-Level Security. The authentication flow uses Microsoft Entra ID, and authorization is enforced by SQL.
 
 Instead of DAB enforcing user-based filtering, SQL enforces it directly using RLS policies tied to the authenticated context. Even if an API misconfigures filtering logic, the database enforces row-level restrictions. This is the most robust model because authorization is guaranteed at the data layer.
 
@@ -96,14 +96,14 @@ WITH (STATE = ON);
 
 Even if DAB returns all rows, SQL only delivers those where `Owner` matches the database user. Authorization is guaranteed at the data layer.
 
-## What Changed from Quickstart 4
+## Key Implementation Files
 
-| File | Change |
-|------|--------|
-| `api/dab-config.json` | Removed `policy` from all actions — no DAB-level filtering |
-| `database.sql` | Added `UserFilterPredicate` function and `UserFilterPolicy` security policy |
+| File | Purpose |
+|------|---------|
+| `api/dab-config.json` | Removes DAB-level `policy` filtering for data actions |
+| `database.sql` | Adds `UserFilterPredicate` function and `UserFilterPolicy` security policy |
 
-> The auth flow and web app are identical to Quickstart 4. Only the enforcement layer moved from DAB into SQL.
+> The key behavior in this quickstart is that authorization is enforced in SQL with RLS rather than in DAB policy expressions.
 
 ## Database Schema
 
@@ -120,12 +120,3 @@ erDiagram
 
 > The `Owner` column stores the Entra ID UPN. The RLS policy filters rows automatically at the SQL layer.
 
-## Related Quickstarts
-
-| Quickstart | Inbound | Outbound | Security |
-|------------|---------|----------|----------|
-| [Quickstart 1](https://github.com/Azure-Samples/dab-2.0-quickstart-web_anon-api_anon-db_sql_auth) | Anonymous | SQL Auth | — |
-| [Quickstart 2](https://github.com/Azure-Samples/dab-2.0-quickstart-web_anon-api_anon-db_entra) | Anonymous | Managed Identity | — |
-| [Quickstart 3](https://github.com/Azure-Samples/dab-2.0-quickstart-web_anon-api_entra-db_entra) | Entra ID | Managed Identity | — |
-| [Quickstart 4](https://github.com/Azure-Samples/dab-2.0-quickstart-web_entra-api_entra-db_entra-api_rls) | Entra ID | Managed Identity | API RLS |
-| **This repo** | Entra ID | Managed Identity | DB RLS |
